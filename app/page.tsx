@@ -25,6 +25,7 @@ export type ReceiptData = {
   weight: string
   departDate?: string
   barcode?: string
+  charges: { label: string; amount: number }[]
 }
 
 export default function Page() {
@@ -44,7 +45,13 @@ export default function Page() {
     email: '',
     arrivalDate: '',
     pieces: '',
-    weight: ''
+    weight: '',
+    charges: [
+      { label: 'Services', amount: 0 },
+      { label: 'Special', amount: 0 },
+      { label: 'Insurance', amount: 0 },
+      { label: 'Other / VAT', amount: 0 }
+    ]
   })
   const [confirmed, setConfirmed] = useState(false)
   const receiptRef = useRef<HTMLDivElement>(null)

@@ -377,7 +377,7 @@ const ReceiptPreview = forwardRef<HTMLDivElement, Props>(({ data }, ref) => {
               }}
             >
               <div>CODES</div>
-              <div style={{ textAlign: "right" }}>CHARGES</div>
+              <div style={{ textAlign: "right" }}>CHARGES (USD)</div>
             </div>
             <div
               style={{
@@ -386,14 +386,14 @@ const ReceiptPreview = forwardRef<HTMLDivElement, Props>(({ data }, ref) => {
                 gap: 6,
               }}
             >
-              <div>Services</div>
-              <div style={{ textAlign: "right" }}>$1,000.00</div>
-              <div>Special</div>
-              <div style={{ textAlign: "right" }}>$500.00</div>
-              <div>Insurance</div>
-              <div style={{ textAlign: "right" }}>$20.00</div>
-              <div>Other / VAT</div>
-              <div style={{ textAlign: "right" }}>$0.00</div>
+              {data.charges.map((c, idx) => (
+                <>
+                  <div key={`l-${idx}`}>{c.label}</div>
+                  <div key={`v-${idx}`} style={{ textAlign: "right" }}>{`$${(
+                    c.amount || 0
+                  ).toFixed(2)}`}</div>
+                </>
+              ))}
             </div>
           </div>
           <div
@@ -413,13 +413,17 @@ const ReceiptPreview = forwardRef<HTMLDivElement, Props>(({ data }, ref) => {
             <div style={{ textAlign: "right" }}>
               TOTAL
               <br />
-              <span style={{ fontWeight: 700 }}>$1,520.00</span>
+              <span style={{ fontWeight: 700 }}>{`$${data.charges
+                .reduce((s, c) => s + (c.amount || 0), 0)
+                .toFixed(2)}`}</span>
             </div>
           </div>
           <div>
             AMT PAID
             <br />
-            <span style={{ fontWeight: 700 }}>$1,520.00</span>
+            <span style={{ fontWeight: 700 }}>{`$${data.charges
+              .reduce((s, c) => s + (c.amount || 0), 0)
+              .toFixed(2)}`}</span>
           </div>
           <div>
             Receiver's vat and tax charge:

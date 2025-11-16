@@ -116,6 +116,26 @@ export default function ReceiptForm({
         onChange={set("weight")}
         disabled={disabled}
       />
+      <h2>Charges (USD)</h2>
+      {value.charges.map((c, i) => (
+        <div key={i} style={{ display: "flex", gap: 8 }}>
+          <input value={c.label} disabled style={{ flex: 1 }} />
+          <input
+            type="number"
+            min={0}
+            step="0.01"
+            placeholder="$0.00"
+            value={Number.isFinite(c.amount) ? c.amount : 0}
+            onChange={(e) => {
+              const next = [...value.charges];
+              next[i] = { ...c, amount: parseFloat(e.target.value || "0") };
+              onChange({ ...value, charges: next });
+            }}
+            disabled={disabled}
+            style={{ width: 140 }}
+          />
+        </div>
+      ))}
     </form>
   );
 }
