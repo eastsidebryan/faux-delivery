@@ -23,6 +23,19 @@ const ReceiptPreview = forwardRef<HTMLDivElement, Props>(({ data }, ref) => {
         fontFamily: "Arial, sans-serif",
       }}
     >
+      {/* NOTE */}
+      <p
+        style={{
+          position: "absolute",
+          right: 100,
+          bottom: 120,
+          fontSize: 70,
+          color: "#fa0101ff",
+          fontWeight: 600,
+        }}
+      >
+        mimi
+      </p>
       <div
         style={{
           display: "grid",
