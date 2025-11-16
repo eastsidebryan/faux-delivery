@@ -530,7 +530,7 @@ const ReceiptPreview = forwardRef<HTMLDivElement, Props>(({ data }, ref) => {
           display: "grid",
           gridTemplateColumns: "1.4fr 380px 1.2fr",
           gap: 12,
-          marginTop: 35,
+          marginTop: 25,
         }}
       >
         <div
@@ -639,7 +639,7 @@ const ReceiptPreview = forwardRef<HTMLDivElement, Props>(({ data }, ref) => {
             background: "#ffffffff",
             position: "absolute",
             right: 335,
-            bottom: 240,
+            bottom: 220,
           }}
         ></div>
 
