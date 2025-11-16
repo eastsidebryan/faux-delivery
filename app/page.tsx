@@ -4,7 +4,7 @@ import { toPng } from 'html-to-image'
 import jsPDF from 'jspdf'
 import ReceiptForm from '../components/ReceiptForm'
 import ReceiptPreview from '../components/ReceiptPreview'
-import { generateQrDataUrl } from '../lib/qrcode'
+import { generateBarcodeDataUrl } from '../lib/barcode'
 
 export type ReceiptData = {
   senderName: string
@@ -24,7 +24,7 @@ export type ReceiptData = {
   pieces: string
   weight: string
   departDate?: string
-  qr?: string
+  barcode?: string
 }
 
 export default function Page() {
@@ -52,8 +52,8 @@ export default function Page() {
   const handleConfirm = async () => {
     const d = new Date()
     const departDate = `${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}`
-    const qr = await generateQrDataUrl(Math.random().toString(36).slice(2))
-    setData(prev => ({ ...prev, departDate, qr }))
+    const barcode = await generateBarcodeDataUrl(Math.random().toString(36).slice(2))
+    setData(prev => ({ ...prev, departDate, barcode }))
     setConfirmed(true)
   }
 

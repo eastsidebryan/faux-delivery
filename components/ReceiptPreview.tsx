@@ -63,7 +63,7 @@ const ReceiptPreview = forwardRef<HTMLDivElement, Props>(({ data }, ref) => {
           />
         </div>
         {/* Right column: Size and weight */}
-        {/* Middle column: QR panel */}
+        {/* Middle column: Barcode panel */}
         <div
           style={{
             height: logoHeight,
@@ -326,9 +326,9 @@ const ReceiptPreview = forwardRef<HTMLDivElement, Props>(({ data }, ref) => {
               background: "#fafafa",
             }}
           >
-            {data.qr ? (
+            {data.barcode ? (
               <img
-                src={data.qr}
+                src={data.barcode}
                 alt="QR"
                 style={{ width: "80%", height: "80%", objectFit: "contain" }}
               />
