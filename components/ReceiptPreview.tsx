@@ -16,7 +16,7 @@ const ReceiptPreview = forwardRef<HTMLDivElement, Props>(({ data }, ref) => {
       ref={ref}
       style={{
         width: 1120,
-        height: 920,
+        height: 950,
         background: "#f8e4ea",
         border: "12px solid #f8e4ea",
         position: "relative",
