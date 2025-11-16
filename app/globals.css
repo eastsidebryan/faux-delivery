@@ -1,0 +1,6 @@
+:root { color-scheme: light }
+* { box-sizing: border-box }
+html, body { height: 100%; margin: 0 }
+body { font-family: Arial, sans-serif }
+input, textarea, button { padding: 8px; font-size: 14px }
+button { cursor: pointer }
